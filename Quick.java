@@ -1,7 +1,8 @@
 import java.util.Random;
+import java.util.Arrays;
 
 public class Quick {
-  private static int partition(int[] data, int start, int end) {
+  public static int partitionLol(int[] data, int start, int end) {
     //In range between start and end, inclusive
     Random randgen = new Random();
     int pivotIdx = Math.abs(randgen.nextInt() % (end - start + 1)) + start;
@@ -19,6 +20,28 @@ public class Quick {
     return j; //new idx of the pivot
   }
 
+  public static int partition(int[] data, int start, int end) {
+    //In range between start and end, inclusive
+    Random randgen = new Random();
+    int pivotIdx = Math.abs(randgen.nextInt() % (end - start + 1)) + start;
+    System.out.println(pivotIdx);
+    int pivot = data[pivotIdx];
+    swap(data, start, pivotIdx);
+    ++start;
+
+    while (start < end) {
+      if (data[start] < pivot) {
+        System.out.println(Arrays.toString(data));
+        swap(data, start, end);
+        ++start;
+        --end;
+      }
+    }
+
+    System.ou
+    return 1;
+  }
+
   private static int[] swap(int[] data, int idx, int idx2) {
     int temp = data[idx];
     data[idx] = data[idx2];
@@ -28,7 +51,7 @@ public class Quick {
   }
 
   public static int quickselect(int[] data, int k) {
-    
+
 
     return 1;
   }

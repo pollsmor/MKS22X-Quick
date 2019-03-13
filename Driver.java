@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Driver {
   public static void main(String[] args) {
     int[] arr = {6, 98421, 10, 91, 8, -9, 7, -195};
@@ -5,6 +7,8 @@ public class Driver {
     int[] arr3 = {999, 999, 999, 4, 1, 0, 3, 2, 999, 999, 999};
 
     //System.out.println(Quick.partition(arr, 0, 7));
-    System.out.println(Quick.quickselect(arr3, 7));
+    //System.out.println(Quick.quickselect(arr3, 7));
+    Quick.quicksort(arr2);
+    System.out.println(Arrays.toString(arr2));
   }
 }

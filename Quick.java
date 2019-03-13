@@ -8,8 +8,8 @@ public class Quick {
       return start;
 
     //In range between start and end, inclusive
-    Random randgen = new Random();
-    int pivotIdx = Math.abs(randgen.nextInt() % (end - start + 1)) + start;
+    int pivotIdx = (int)(Math.random() * (end - start + 1)) + start;
+    System.out.println(pivotIdx);
 
     //Median optimization
     int[] medianCalc = {start, pivotIdx, end};
@@ -67,5 +67,22 @@ public class Quick {
     }
 
     return data[pivot];
+  }
+
+  public static void quicksort(int[] data) {
+    //Hardcoded case
+    if (data.length == 1)
+      return;
+
+    quicksortH(data, 0, data.length - 1);
+  }
+
+  private static void quicksortH(int[] data, int lo, int hi) {
+    if (lo == hi)
+      return;
+
+    int pivot = partition(data, lo, hi);
+    quicksortH(data, lo, pivot - 1);
+    quicksortH(data, pivot + 1, hi);
   }
 }

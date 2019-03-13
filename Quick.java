@@ -52,21 +52,21 @@ public class Quick {
   }
 
   public static int quickselect(int[] data, int k) {
-    int pivotIdx = partition(data, 0, data.length - 1);
-    //lowest value is guaranteed to be in the 0th index, for some reason this breaks for k = 0 otherwise
-    if (k == 0)
-      return data[0];
+    //start and end will be changed according  to the pivot
+    int start = 0;
+    int end = data.length - 1;
+    int pivot = partition(data, start, end);
 
-    return quickselectH(data, pivotIdx, k);
-  }
+    while (pivot != k) {
+      if (pivot > k)
+        end = pivot - 1; //should be on the left, rightmost bounds is pivot - 1
 
-  private static int quickselectH(int[] data, int pivotIdx, int k) {
-    if (pivotIdx == k)
-      return data[pivotIdx];
+      else if (pivot < k)
+        start = pivot + 1; //vice versa, on the right
 
-    if (pivotIdx < k)
-      return quickselectH(data, partition(data, pivotIdx + 1, data.length - 1), k);
+      pivot = partition(data, start, end);
+    }
 
-    return quickselectH(data, partition(data, 0, pivotIdx - 1), k);
+    return data[pivot];
   }
 }

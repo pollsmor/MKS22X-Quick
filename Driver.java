@@ -5,6 +5,6 @@ public class Driver {
     int[] arr3 = {999, 999, 999, 4, 1, 0, 3, 2, 999, 999, 999};
 
     //System.out.println(Quick.partition(arr, 0, 7));
-    System.out.println(Quick.quickselect(arr, 4));
+    System.out.println(Quick.quickselect(arr, 0));
   }
 }

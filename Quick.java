@@ -9,7 +9,6 @@ public class Quick {
     int[] nums = {start, pivotIdx, end};
     Arrays.sort(nums);
     pivotIdx = nums[1]; //the median
-    System.out.println(pivotIdx);
     int pivot = data[pivotIdx];
     swap(data, start, pivotIdx); //swap to 0 index
     int i = start; //since start and end change
@@ -41,7 +40,6 @@ public class Quick {
     swap(data, start, end); //for some reason I need to do this, otherwise it doesn't work
     swap(data, i, end); //swap the pivot at idx 0 to the correct index
 
-    System.out.println(Arrays.toString(data));
     return end;
   }
 
@@ -55,11 +53,20 @@ public class Quick {
 
   public static int quickselect(int[] data, int k) {
     int pivotIdx = partition(data, 0, data.length - 1);
+    //lowest value is guaranteed to be in the 0th index, for some reason this breaks for k = 0 otherwise
+    if (k == 0)
+      return data[0];
 
     return quickselectH(data, pivotIdx, k);
   }
 
-  public static int quickselectH(int[] data, int pivot, int k) {
-    
+  private static int quickselectH(int[] data, int pivotIdx, int k) {
+    if (pivotIdx == k)
+      return data[pivotIdx];
+
+    if (pivotIdx < k)
+      return quickselectH(data, partition(data, pivotIdx + 1, data.length - 1), k);
+
+    return quickselectH(data, partition(data, 0, pivotIdx - 1), k);
   }
 }

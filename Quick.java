@@ -3,6 +3,10 @@ import java.util.Arrays;
 
 public class Quick {
   public static int partition(int[] data, int start, int end) {
+    //Hardcoded case
+    if (start == end)
+      return start;
+
     //In range between start and end, inclusive
     Random randgen = new Random();
     int pivotIdx = Math.abs(randgen.nextInt() % (end - start + 1)) + start;
@@ -18,20 +22,24 @@ public class Quick {
     int j = end;
     ++i; //start is now 1 since 0 is the pivot
 
-    while (i <= j) {
-      if (data[i] > pivot) {
-        swap(data, i, j);
+    while (i != j) {
+      if (data[i] < pivot) //count up without swapping, all is normal
         ++i;
-      }
 
-      if (data[j] < pivot) {
-        swap(data, j, i);
+      else if (data[i] >= pivot) {
+        swap(data, i, j);
         --j;
       }
+    }
 
-      swap(data, 0, j);
+    //Pivot randomly lands, this picks the correct one
+    if (data[i] < pivot) {
+      swap(data, start, i);
+      return i;
+    }
 
-    return end;
+    swap(data, start, i - 1);
+    return i - 1;
   }
 
   private static int[] swap(int[] data, int idx, int idx2) {

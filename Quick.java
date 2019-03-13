@@ -54,8 +54,12 @@ public class Quick {
   }
 
   public static int quickselect(int[] data, int k) {
+    int pivotIdx = partition(data, 0, data.length - 1);
 
+    return quickselectH(data, pivotIdx, k);
+  }
 
-    return 1;
+  public static int quickselectH(int[] data, int pivot, int k) {
+    
   }
 }

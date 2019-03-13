@@ -6,39 +6,30 @@ public class Quick {
     //In range between start and end, inclusive
     Random randgen = new Random();
     int pivotIdx = Math.abs(randgen.nextInt() % (end - start + 1)) + start;
-    int[] nums = {start, pivotIdx, end};
-    Arrays.sort(nums);
-    pivotIdx = nums[1]; //the median
+
+    //Median optimization
+    int[] medianCalc = {start, pivotIdx, end};
+    Arrays.sort(medianCalc); //am I allowed  to do this?
+    pivotIdx = medianCalc[1]; //the median, 0 <1> 2
+
     int pivot = data[pivotIdx];
     swap(data, start, pivotIdx); //swap to 0 index
     int i = start; //since start and end change
     int j = end;
-    ++start; //start is now 1 since 0 is the pivot
+    ++i; //start is now 1 since 0 is the pivot
 
-    while (start < end) {
-      if (data[start] == pivot) { //prevent duplicates breaking the algorithm
-        if (Math.random() < 0.5)
-          swap(data, start, end);
-
-        ++start;
+    while (i <= j) {
+      if (data[i] > pivot) {
+        swap(data, i, j);
+        ++i;
       }
 
-      while (data[start] < pivot) {
-        //For the case where you get the maximum number which will cause an index exception for the while above
-        if (start == end) {
-          swap(data, i, j); //just swap the pivot right to the end
-          return end;
-        }
-
-        ++start;
+      if (data[j] < pivot) {
+        swap(data, j, i);
+        --j;
       }
 
-      while (data[end] > pivot) --end;
-      swap(data, start, end);
-    }
-
-    swap(data, start, end); //for some reason I need to do this, otherwise it doesn't work
-    swap(data, i, end); //swap the pivot at idx 0 to the correct index
+      swap(data, 0, j);
 
     return end;
   }

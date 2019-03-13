@@ -17,8 +17,12 @@ public class Quick {
     ++start; //start is now 1 since 0 is the pivot
 
     while (start < end) {
-      if (data[start] == pivot) //prevent duplicates breaking the algorithm
+      if (data[start] == pivot) { //prevent duplicates breaking the algorithm
+        if (Math.random() < 0.5)
+          swap(data, start, end);
+
         ++start;
+      }
 
       while (data[start] < pivot) {
         //For the case where you get the maximum number which will cause an index exception for the while above

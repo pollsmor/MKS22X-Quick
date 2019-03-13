@@ -12,6 +12,9 @@ public class Quick {
     int i = start + 1;
 
     while (start < end) {
+      if (data[start] == pivot)
+        ++start;
+
       while (data[start] < pivot) ++start;
       while (data[end] > pivot) --end;
       swap(data, start, end);

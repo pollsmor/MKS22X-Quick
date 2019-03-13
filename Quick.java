@@ -9,18 +9,29 @@ public class Quick {
     System.out.println(pivotIdx);
     int pivot = data[pivotIdx];
     swap(data, start, pivotIdx);
-    int i = start + 1;
+    int i = start;
+    int j = end;
+    ++start;
 
     while (start < end) {
       if (data[start] == pivot)
         ++start;
 
-      while (data[start] < pivot) ++start;
+      while (data[start] < pivot) {
+        if (start == end) {
+          swap(data, i, j);
+          return end;
+        }
+
+        ++start;
+      }
+      
       while (data[end] > pivot) --end;
       swap(data, start, end);
     }
 
     swap(data, start, end);
+    swap(data, i, end);
 
     System.out.println(Arrays.toString(data));
     System.out.println(end);

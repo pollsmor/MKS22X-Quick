@@ -3,13 +3,14 @@ import java.util.Arrays;
 
 public class Quick {
   public static int partition(int[] data, int start, int end) {
+
     //Hardcoded case
     if (start == end)
       return start;
 
     //In range between start and end, inclusive
-    int pivotIdx = (int)(Math.random() * (end - start + 1)) + start;
-    System.out.println(pivotIdx);
+    Random randgen = new Random();
+    int pivotIdx = randgen.nextInt(end - start + 1) + start;
 
     //Median optimization
     int[] medianCalc = {start, pivotIdx, end};
@@ -78,7 +79,7 @@ public class Quick {
   }
 
   private static void quicksortH(int[] data, int lo, int hi) {
-    if (lo == hi)
+    if (lo >= hi)
       return;
 
     int pivot = partition(data, lo, hi);

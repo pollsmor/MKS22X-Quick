@@ -3,7 +3,6 @@ import java.util.Arrays;
 
 public class Quick {
   public static int partition(int[] data, int start, int end) {
-
     //Hardcoded case
     if (start == end)
       return start;
@@ -78,7 +77,9 @@ public class Quick {
     quicksortH(data, 0, data.length - 1);
   }
 
+  //Made thanks to the pseudocode provided during class
   private static void quicksortH(int[] data, int lo, int hi) {
+    //Base case, since by the end of partition lo > hi at times
     if (lo >= hi)
       return;
 

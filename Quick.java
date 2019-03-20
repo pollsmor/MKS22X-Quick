@@ -51,7 +51,7 @@ public class Quick {
   }
 
   public static int quickselect(int[] data, int k) {
-    //start and end will be changed according  to the pivot
+    //start and end will be changed according to the pivot
     int start = 0;
     int end = data.length - 1;
     int pivot = partition(data, start, end);

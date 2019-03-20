@@ -8,12 +8,23 @@ public class Driver {
 
     Quick.quicksort(arr);
     Quick.quicksort(arr2);
-    Quick.quicksort(arr3);
+    //Quick.quicksort(arr3);
 
     System.out.println(Arrays.toString(arr));
     System.out.println(Arrays.toString(arr2));
-    System.out.println(Arrays.toString(arr3));
+    //System.out.println(Arrays.toString(arr3));
 
-    System.out.println(Quick.quickselect(arr3, 4));
+    System.out.println(Quick.quickselect(arr2, 0));
+    System.out.println(Quick.quickselect(arr2, 1));
+    System.out.println(Quick.quickselect(arr2, 2));
+    System.out.println(Quick.quickselect(arr2, 3));
+    System.out.println(Quick.quickselect(arr2, 4));
+    System.out.println(Quick.quickselect(arr2, 5));
+    System.out.println(Quick.quickselect(arr2, 6));
+    System.out.println(Quick.quickselect(arr2, 7));
+    System.out.println(Quick.quickselect(arr2, 8));
+    System.out.println(Quick.quickselect(arr2, 9));
+    System.out.println(Quick.quickselect(arr2, 10));
+    System.out.println(Quick.quickselect(arr2, 11));
   }
 }

@@ -79,9 +79,11 @@ public class Quick {
 
   //Made thanks to the pseudocode provided during class
   private static void quicksortH(int[] data, int lo, int hi) {
-    //Base case, since by the end of partition lo > hi at times
-    if (lo >= hi)
+    //thx Ethan
+    if (hi - lo <= 25) {
+      insertionsort(data, lo, hi);
       return;
+    }
 
     int pivot = partition(data, lo, hi);
     quicksortH(data, lo, pivot - 1);

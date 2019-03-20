@@ -67,7 +67,7 @@ public class KDriver2 {
     * Test your sort here //yoursort(start);
     * Add code to switch which sort is tested by changing one of the args!
     */
-    Merge.mergesort(start);
+    Quick.quicksort(start);
 
    long elapsedTime = System.currentTimeMillis() - startTime;
    if(Arrays.equals(start,result)){
